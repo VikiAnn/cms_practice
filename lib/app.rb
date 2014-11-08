@@ -14,8 +14,17 @@ class CMS < Sinatra::Base
     erb :error
   end
 
+  get '/' do
+    redirect '/pages/'
+  end
+
   get '/pages/:slug' do |slug|
     page = Page.find_by_slug(slug)
     erb :page, :locals => {:page => page}
+  end
+
+  get '/pages/' do
+    pages = Page.all
+    erb :pages, :locals => {:pages => pages}
   end
 end

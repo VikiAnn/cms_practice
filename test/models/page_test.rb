@@ -12,4 +12,17 @@ class PageTest < Minitest::Test
     assert_equal page_data[:slug], found_page.slug
     assert_equal page_data[:content], found_page.content
   end
+
+  def test_it_can_find_all_pages
+    page_data_1 = {:slug => "location",
+                   :content => "We're located in Denver, CO!"}
+    page_data_2 = {:slug => "contact",
+                   :content => "Call us at 111-222-3333"}
+
+    returned_page_1 = Page.create(page_data_1)
+    returned_page_2 = Page.create(page_data_2)
+
+    assert_includes Page.all, returned_page_1
+    assert_includes Page.all, returned_page_2
+  end
 end
