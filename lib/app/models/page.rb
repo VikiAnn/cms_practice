@@ -21,6 +21,10 @@ class Page
     table.select.map{|p| Page.new(p)}
   end
 
+  def self.delete(slug)
+    table.where(slug: slug).delete
+  end
+
   attr_reader :slug, :content
 
   def initialize(data)

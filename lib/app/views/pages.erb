@@ -6,8 +6,8 @@
     <p>
       <ul>
         <% pages.each do |page| %>
-          <li><%= page.slug %></li>
-          <li><%= page.content %></li>
+          <li><a href='/pages/<%= page.slug %>'>Page slug: <%= page.slug %></a></li>
+          <p><%= page.content %></p>
         <% end %>
     </ul>
     </p>

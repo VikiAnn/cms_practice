@@ -11,7 +11,8 @@ require 'bundler'
 Bundler.require
 
 Capybara.app = CMS
-Capybara.register_driver(:poltergeist) do |app| Capybara::Poltergeist::Driver.new(app, js_errors: false)
+Capybara.register_driver(:poltergeist) do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false)
 end
 
 module CleanTheDatabase
