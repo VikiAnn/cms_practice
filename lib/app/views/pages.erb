@@ -4,7 +4,12 @@
   <body>
     <h1>Sinatra CMS</h1>
     <p>
-      <%= pages %>
+      <ul>
+        <% pages.each do |page| %>
+          <li><%= page.slug %></li>
+          <li><%= page.content %></li>
+        <% end %>
+    </ul>
     </p>
   </body>
 </html>

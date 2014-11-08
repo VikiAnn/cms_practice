@@ -1,6 +1,7 @@
 require './test/test_helper'
 
 class PageIndexTest < FeatureTest
+  Capybara.use_default_driver
   def test_it_shows_all_pages
     page_data_1 = {:slug => "location",
                    :content => "We're located in Denver, CO!"}
@@ -9,8 +10,8 @@ class PageIndexTest < FeatureTest
 
     Page.create( page_data_1 )
     Page.create( page_data_2 )
-    get "/pages/"
-    assert_page_has page_data_1[:content]
-    assert_page_has page_data_2[:content]
+    visit '/pages/'
+    assert page.has_content?(page_data_1[:content])
+    assert page.has_content?(page_data_2[:content])
   end
 end

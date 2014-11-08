@@ -5,8 +5,14 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'rack/test'
+require 'capybara/poltergeist'
+require 'launchy'
 require 'bundler'
 Bundler.require
+
+Capybara.app = CMS
+Capybara.register_driver(:poltergeist) do |app| Capybara::Poltergeist::Driver.new(app, js_errors: false)
+end
 
 module CleanTheDatabase
   DatabaseCleaner.strategy = :truncation
@@ -26,6 +32,7 @@ end
 
 class FeatureTest < MiniTest::Test
   include Rack::Test::Methods
+  include Capybara::DSL
 
   def app
     CMS
