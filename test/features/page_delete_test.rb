@@ -12,7 +12,7 @@ class PageDeleteTest < FeatureTest
 
     Page.delete(page_data_2[:slug])
 
-    visit '/pages/'
+    visit '/pages'
     refute page.has_content?(page_data_2[:content])
     get '/pages/content'
     last_response.not_found?

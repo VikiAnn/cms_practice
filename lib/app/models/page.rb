@@ -25,6 +25,13 @@ class Page
     table.where(slug: slug).delete
   end
 
+  def self.update(slug, data)
+    id = table.where(slug: slug).first[:id]
+    table.where(id: id)
+    .update(data)
+    Page.new(table.where(id: id).first)
+  end
+
   attr_reader :slug, :content
 
   def initialize(data)

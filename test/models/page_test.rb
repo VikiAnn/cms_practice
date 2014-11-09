@@ -39,4 +39,13 @@ class PageTest < Minitest::Test
     refute_includes Page.all, returned_page_2
   end
 
+  def test_it_can_edit_a_page
+    page_data_1 = {:slug => "location",
+                   :content => "We're located in Denver, CO!"}
+    Page.create(page_data_1)
+    new_data = {slug: "new location",
+                content: "We moved, yo"}
+    new_page = Page.update(page_data_1[:slug], new_data)
+    assert_includes Page.all, new_page
+  end
 end

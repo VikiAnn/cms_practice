@@ -1,0 +1,15 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Edit Your Page</h1>
+    <p>
+      <form action='/pages/<%= page.slug %>' method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="page[slug]" placeholder="slug">
+        <input type="text" name="page[content]" placeholder="content">
+        <input type="submit" value="Submit">
+      </form>
+    </p>
+  </body>
+</html>

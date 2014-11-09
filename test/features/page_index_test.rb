@@ -10,7 +10,7 @@ class PageIndexTest < FeatureTest
 
     Page.create( page_data_1 )
     Page.create( page_data_2 )
-    visit '/pages/'
+    visit '/pages'
     assert page.has_css?('ul li')
     assert page.has_content?(page_data_1[:content])
     assert page.has_content?(page_data_2[:content])
